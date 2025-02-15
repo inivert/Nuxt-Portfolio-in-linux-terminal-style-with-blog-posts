@@ -1,13 +1,13 @@
 # Interactive Linux Terminal Portfolio
 
-A modern, terminal-themed portfolio and blog platform built with Nuxt 3, featuring an authentic Linux terminal experience with interactive commands, smooth animations, and a dark mode interface.
+A modern, terminal-themed portfolio and blog platform built with Nuxt 3, featuring an authentic Linux terminal experience with interactive commands, smooth animations, and a dark mode interface inspired by the Tokyo Night theme.
 
 ## 🌟 Key Features
 
 - 💻 Authentic Linux terminal emulation
 - 🔍 Interactive CLI commands and responses
 - 📝 Integrated blog platform for tech articles
-- 🎨 Terminal-inspired design with syntax highlighting
+- 🎨 Tokyo Night-inspired terminal theme
 - 🌙 Dark mode optimized for terminal aesthetics
 - ⚡ Fast page transitions and command execution
 - 📱 Fully responsive terminal interface
@@ -31,115 +31,40 @@ git clone https://github.com/inivert/Nuxt-Portfolio-in-linux-terminal-style-with
 cd Nuxt-Portfolio-in-linux-terminal-style-with-blog-posts
 ```
 
-1. Install dependencies:
+2. Install dependencies:
 
 ```bash
 pnpm install
 ```
 
-1. Start the development server:
+3. Start the development server:
 
 ```bash
 pnpm dev
 ```
 
-1. Open your browser and visit: `http://localhost:3000`
+4. Open your browser and visit: `http://localhost:3000`
 
-## 🌐 Deploying to Vercel
+## 🎨 Theme Customization
 
-### Automatic Deployment (Recommended)
+The portfolio uses a custom Tokyo Night-inspired theme. Colors are defined in `tailwind.config.ts`:
 
-1. Fork this repository to your GitHub account
-2. Create a new project on [Vercel](https://vercel.com)
-3. Connect your GitHub repository to Vercel
-4. Configure the following settings:
-   - Framework Preset: `Nuxt.js`
-   - Build Command: `pnpm build`
-   - Output Directory: `.output/public`
-   - Install Command: `pnpm install`
-
-Vercel will automatically deploy your site and provide you with a URL.
-
-### Manual Deployment
-
-1. Install Vercel CLI:
-
-```bash
-pnpm install -g vercel
-```
-
-1. Login to Vercel:
-
-```bash
-vercel login
-```
-
-1. Deploy the project:
-
-```bash
-vercel
-```
-
-## 🔧 Customization Guide
-
-### Terminal Features
-
-1. **Command System**
-   - Add or modify commands in `components/terminal/commands/`
-   - Each command is a Vue component with its own logic and output
-   - Custom command parser in `utils/terminal/`
-
-2. **Terminal Customization**
-   - Terminal settings in `components/terminal/config.ts`
-   - Customize prompt style, available commands, and terminal behavior
-   - Add custom aliases and command shortcuts
-
-3. **Blog Integration**
-   - Posts are stored in `content/blog/`
-   - Terminal commands for blog navigation
-   - Markdown support with syntax highlighting
-
-### Styling
-
-1. **Terminal Theme**
-   - Colors defined in `tailwind.config.ts`
-   - Terminal-specific styles in `assets/css/terminal.css`
-   - Custom syntax highlighting themes
-
-2. **Animations**
-   - Terminal typing effects in `components/terminal/animations/`
-   - Page transitions in `assets/css/transitions.css`
-   - Command execution animations
-
-3. **Typography**
-   - JetBrains Mono for authentic terminal feel
-   - Configurable font sizes and weights
-   - Terminal-optimized line height and spacing
-
-## 📁 Project Structure
-
-```txt
-├── assets/
-│   ├── css/              # Global CSS and terminal styles
-│   └── terminal/         # Terminal-specific assets
-├── components/
-│   ├── terminal/         # Terminal components
-│   │   ├── commands/     # Command implementations
-│   │   ├── core/         # Core terminal functionality
-│   │   └── ui/          # Terminal UI components
-│   └── blog/            # Blog components
-├── content/
-│   └── blog/            # Markdown blog posts
-├── utils/
-│   ├── terminal/        # Terminal utilities
-│   └── seo.ts          # SEO configuration
-├── pages/              # Application pages
-└── public/             # Static files
+```ts
+colors: {
+  'terminal-black': '#1a1b26',
+  'terminal-white': '#a9b1d6',
+  'terminal-red': '#f7768e',
+  'terminal-green': '#9ece6a',
+  'terminal-yellow': '#e0af68',
+  'terminal-blue': '#7aa2f7',
+  'terminal-purple': '#9d7cd8',
+  'terminal-cyan': '#7dcfff'
+}
 ```
 
 ## 🖥️ Terminal Commands
 
-The portfolio comes with a set of pre-configured Linux-style commands:
+Available terminal commands:
 
 ```bash
 help                    # Show available commands
@@ -154,39 +79,37 @@ skills                  # Display skills and expertise
 social                  # Show social media links
 ```
 
-### Custom Commands
+## 📝 Blog Posts
 
-You can add your own commands by:
+Create blog posts in `content/blog/` using this format:
 
-1. Creating a new command component in `components/terminal/commands/`
-2. Registering it in `utils/terminal/commands.ts`
-3. Adding command documentation in `utils/terminal/help.ts`
+```markdown
+---
+title: Your Post Title
+description: Brief description
+date: YYYY-MM-DD
+category: Linux | Security | Tutorial | Networking
+image:
+  src: /images/blog/your-image.jpg
+  alt: Image description
+author: Your Name
+draft: false
+---
+
+Your content here...
+```
 
 ## 🤝 Contributing
 
 1. Fork the repository
 2. Create a feature branch:
 ```bash
-git checkout -b feature/amazing-feature
+git checkout -b feature/your-feature
 ```
 3. Make your changes
-4. Commit with a descriptive message:
-```bash
-git commit -m 'Add some amazing feature'
-```
-5. Push to your branch:
-```bash
-git push origin feature/amazing-feature
-```
+4. Commit with a descriptive message
+5. Push to your branch
 6. Open a Pull Request
-
-### Development Guidelines
-
-- Follow the terminal-first design philosophy
-- Maintain command-line interface best practices
-- Add tests for new commands
-- Update documentation for new features
-- Ensure responsive design for all terminal components
 
 ## 📝 License
 
@@ -194,10 +117,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🙏 Acknowledgments
 
-- Inspired by Linux terminal interfaces
+- Theme inspired by [Tokyo Night](https://github.com/enkia/tokyo-night-vscode-theme)
 - Built with [Nuxt 3](https://nuxt.com/)
 - Styled with [TailwindCSS](https://tailwindcss.com/)
-- Terminal emulation powered by [xterm.js](https://xtermjs.org/)
 
 ## 📝 Adding Blog Posts
 
