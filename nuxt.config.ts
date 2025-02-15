@@ -3,8 +3,8 @@ export default defineNuxtConfig({
   // Enable server-side rendering for better SEO and performance
   ssr: true,
 
-  // Enable Nuxt DevTools for development
-  devtools: { enabled: true },
+  // Disable devtools in production
+  devtools: { enabled: process.env.NODE_ENV !== 'production' },
 
   // External modules that add functionality to the project
   modules: [
@@ -54,7 +54,9 @@ export default defineNuxtConfig({
       'JetBrains+Mono': [400, 700],  // Terminal-style font
       'Inter': [400, 500, 600, 700]   // Main text font
     },
-    display: 'swap'                    // Improve font loading performance
+    display: 'swap',                   // Improve font loading performance
+    download: true,                    // Download fonts for better performance
+    preconnect: true                   // Preconnect to Google Fonts
   },
 
   // Global app configuration
@@ -74,33 +76,55 @@ export default defineNuxtConfig({
     // Configure page transitions
     pageTransition: {
       name: 'page',
-      mode: 'out-in'  // Wait for current page to leave before showing new page
-    }
+      mode: 'out-in'
+    },
+    // Enable CDN caching
+    cdnURL: process.env.NUXT_APP_CDN_URL
   },
 
   // Experimental features for better performance
   experimental: {
-    inlineSSRStyles: false,           // Don't inline styles for better caching
+    inlineSSRStyles: true,            // Inline critical CSS
     viewTransition: true,             // Enable modern page transitions
     renderJsonPayloads: true,         // Optimize data transfer
-    componentIslands: true            // Enable component-level code splitting
+    componentIslands: true,           // Enable component-level code splitting
+    payloadExtraction: true,          // Extract static payloads
+    treeshakeClientOnly: true         // Remove server-only code from client bundle
   },
 
   // Pre-render specific routes for static hosting
   nitro: {
     prerender: {
-      routes: ['/', '/about', '/blog']
+      routes: ['/', '/about', '/blog'],
+      crawlLinks: true,               // Automatically detect and prerender linked pages
+      failOnError: false              // Continue build even if prerendering fails
     },
+    minify: true,                     // Minify server bundle
+    timing: false,                    // Disable timing middleware in production
     compatibility: {
       nuxtVersion: '^3.15.4'
-    }
+    },
+    compressPublicAssets: true        // Compress static assets
   },
 
   // Configure how routes are handled
   routeRules: {
-    '/': { prerender: true, static: true },         // Home page
-    '/about': { prerender: true, static: true },    // About page
-    '/blog': { prerender: true, static: true }      // Blog page
+    '/': { prerender: true, static: true },
+    '/about': { prerender: true, static: true },
+    '/blog': { prerender: true, static: true },
+    '/api/**': { cors: true }         // Enable CORS for API routes
+  },
+
+  // Build configuration
+  build: {
+    transpile: process.env.NODE_ENV === 'production' ? ['vue', '@nuxt/content'] : [],
+  },
+
+  // Runtime configuration
+  runtimeConfig: {
+    public: {
+      environment: process.env.NODE_ENV
+    }
   },
 
   compatibilityDate: '2025-02-14'

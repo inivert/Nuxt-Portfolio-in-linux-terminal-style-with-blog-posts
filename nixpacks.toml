@@ -1,11 +1,22 @@
 [phases.setup]
 nixPkgs = ['nodejs', 'pnpm']
+nodeVersion = "18"
 
 [phases.install]
-cmds = ['pnpm install --no-frozen-lockfile']
+cmds = [
+    'pnpm install --no-frozen-lockfile',
+    'pnpm store prune'
+]
 
 [phases.build]
-cmds = ['pnpm run build']
+cmds = [
+    'pnpm run build',
+    'pnpm prune --prod'
+]
 
 [start]
-cmd = 'node .output/server/index.mjs' 
+cmd = 'node .output/server/index.mjs'
+
+[variables]
+NODE_ENV = "production"
+NITRO_PRESET = "node_server" 
