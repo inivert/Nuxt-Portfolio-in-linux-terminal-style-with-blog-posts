@@ -84,11 +84,7 @@ export default defineNuxtConfig({
 
   // Experimental features for better performance
   experimental: {
-    inlineSSRStyles: true,            // Inline critical CSS
     viewTransition: true,             // Enable modern page transitions
-    renderJsonPayloads: true,         // Optimize data transfer
-    componentIslands: true,           // Enable component-level code splitting
-    payloadExtraction: true,          // Extract static payloads
     treeshakeClientOnly: true         // Remove server-only code from client bundle
   },
 
@@ -101,9 +97,6 @@ export default defineNuxtConfig({
     },
     minify: true,                     // Minify server bundle
     timing: false,                    // Disable timing middleware in production
-    compatibility: {
-      nuxtVersion: '^3.15.4'
-    },
     compressPublicAssets: true        // Compress static assets
   },
 
