@@ -1,15 +1,18 @@
-# Network Security & Linux Professional Portfolio
+# Interactive Linux Terminal Portfolio
 
-A modern, terminal-themed portfolio website built with Nuxt 3, featuring smooth animations and a dark mode interface.
+A modern, terminal-themed portfolio and blog platform built with Nuxt 3, featuring an authentic Linux terminal experience with interactive commands, smooth animations, and a dark mode interface.
 
-## 🚀 Features
+## 🌟 Key Features
 
-- 🎨 Terminal-inspired design
-- 🌙 Dark mode support
-- ⚡ Fast page transitions
-- 📱 Fully responsive
-- 🔄 Smooth animations
-- 🎯 SEO optimized
+- 💻 Authentic Linux terminal emulation
+- 🔍 Interactive CLI commands and responses
+- 📝 Integrated blog platform for tech articles
+- 🎨 Terminal-inspired design with syntax highlighting
+- 🌙 Dark mode optimized for terminal aesthetics
+- ⚡ Fast page transitions and command execution
+- 📱 Fully responsive terminal interface
+- 🔄 Smooth command animations
+- 🎯 SEO optimized for developer visibility
 - 🚀 Easy deployment to Vercel
 
 ## 📋 Prerequisites
@@ -24,8 +27,8 @@ Before you begin, ensure you have the following installed:
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/network-security-portfolio.git
-cd network-security-portfolio
+git clone https://github.com/inivert/Nuxt-Portfolio-in-linux-terminal-style-with-blog-posts.git
+cd Nuxt-Portfolio-in-linux-terminal-style-with-blog-posts
 ```
 
 1. Install dependencies:
@@ -79,60 +82,122 @@ vercel
 
 ## 🔧 Customization Guide
 
-### Modifying Content
+### Terminal Features
 
-1. **Blog Posts**
-   - Add or edit markdown files in the `content/blog/` directory
-   - Each post requires: title, description, date, category, and optional readTime
-   - Images can be added to `public/images/blog/`
+1. **Command System**
+   - Add or modify commands in `components/terminal/commands/`
+   - Each command is a Vue component with its own logic and output
+   - Custom command parser in `utils/terminal/`
 
-2. **About Page**
-   - Update `pages/about.vue` to modify your personal information
-   - Sections include: Background, Education, Certifications, and Off-Duty Activities
+2. **Terminal Customization**
+   - Terminal settings in `components/terminal/config.ts`
+   - Customize prompt style, available commands, and terminal behavior
+   - Add custom aliases and command shortcuts
 
-3. **Homepage**
-   - Modify `pages/index.vue` to update the main content
-   - Sections include: Skills, Blog Preview, and Contact information
+3. **Blog Integration**
+   - Posts are stored in `content/blog/`
+   - Terminal commands for blog navigation
+   - Markdown support with syntax highlighting
 
 ### Styling
 
-1. **Colors**
-   - Terminal theme colors are defined in `tailwind.config.ts`
-   - Modify the colors object to change the theme
+1. **Terminal Theme**
+   - Colors defined in `tailwind.config.ts`
+   - Terminal-specific styles in `assets/css/terminal.css`
+   - Custom syntax highlighting themes
 
 2. **Animations**
-   - Page transitions are configured in `assets/css/transitions.css`
-   - Component animations use the `v-motion` directive
-   - Terminal animations use `anime.js`
+   - Terminal typing effects in `components/terminal/animations/`
+   - Page transitions in `assets/css/transitions.css`
+   - Command execution animations
 
 3. **Typography**
-   - Fonts are configured in `nuxt.config.ts` under `googleFonts`
-   - The site uses JetBrains Mono for terminal text and Inter for general content
+   - JetBrains Mono for authentic terminal feel
+   - Configurable font sizes and weights
+   - Terminal-optimized line height and spacing
 
 ## 📁 Project Structure
 
 ```txt
 ├── assets/
-│   └── css/            # Global CSS and transitions
-├── components/         # Reusable Vue components
-├── composables/        # Shared composition functions
-├── content/           # Blog posts and site content
-│   └── blog/          # Markdown blog posts
-├── pages/             # Application pages
-├── public/            # Static files
-└── types/             # TypeScript type definitions
+│   ├── css/              # Global CSS and terminal styles
+│   └── terminal/         # Terminal-specific assets
+├── components/
+│   ├── terminal/         # Terminal components
+│   │   ├── commands/     # Command implementations
+│   │   ├── core/         # Core terminal functionality
+│   │   └── ui/          # Terminal UI components
+│   └── blog/            # Blog components
+├── content/
+│   └── blog/            # Markdown blog posts
+├── utils/
+│   ├── terminal/        # Terminal utilities
+│   └── seo.ts          # SEO configuration
+├── pages/              # Application pages
+└── public/             # Static files
 ```
+
+## 🖥️ Terminal Commands
+
+The portfolio comes with a set of pre-configured Linux-style commands:
+
+```bash
+help                    # Show available commands
+about                   # Display about information
+blog                    # Access blog posts
+blog read <post-id>     # Read a specific blog post
+clear                   # Clear terminal screen
+theme                   # Toggle light/dark theme
+contact                 # Show contact information
+projects                # List projects
+skills                  # Display skills and expertise
+social                  # Show social media links
+```
+
+### Custom Commands
+
+You can add your own commands by:
+
+1. Creating a new command component in `components/terminal/commands/`
+2. Registering it in `utils/terminal/commands.ts`
+3. Adding command documentation in `utils/terminal/help.ts`
 
 ## 🤝 Contributing
 
 1. Fork the repository
-2. Create a new branch
+2. Create a feature branch:
+```bash
+git checkout -b feature/amazing-feature
+```
 3. Make your changes
-4. Submit a pull request
+4. Commit with a descriptive message:
+```bash
+git commit -m 'Add some amazing feature'
+```
+5. Push to your branch:
+```bash
+git push origin feature/amazing-feature
+```
+6. Open a Pull Request
+
+### Development Guidelines
+
+- Follow the terminal-first design philosophy
+- Maintain command-line interface best practices
+- Add tests for new commands
+- Update documentation for new features
+- Ensure responsive design for all terminal components
 
 ## 📝 License
 
-This project is licensed under the MIT License - see the LICENSE file for details
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- Inspired by Linux terminal interfaces
+- Built with [Nuxt 3](https://nuxt.com/)
+- Styled with [TailwindCSS](https://tailwindcss.com/)
+- Terminal emulation powered by [xterm.js](https://xtermjs.org/)
 
 ## 📝 Adding Blog Posts
 
