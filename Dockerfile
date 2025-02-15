@@ -1,24 +1,3 @@
-# Build stage
-FROM node:18-alpine AS builder
-
-WORKDIR /app
-
-# Install pnpm
-RUN corepack enable && corepack prepare pnpm@latest --activate
-
-# Copy package files
-COPY package.json pnpm-lock.yaml ./
-
-# Install dependencies
-RUN pnpm install --frozen-lockfile
-
-# Copy the rest of the application
-COPY . .
-
-# Build the application
-RUN pnpm build
-
-# Production stage
 FROM node:18-alpine
 
 WORKDIR /app
@@ -26,15 +5,20 @@ WORKDIR /app
 # Install pnpm
 RUN corepack enable && corepack prepare pnpm@latest --activate
 
-# Copy built application
-COPY --from=builder /app/.output /app/.output
-COPY --from=builder /app/package.json /app/pnpm-lock.yaml ./
+# Copy only package.json first
+COPY package.json ./
 
-# Install only production dependencies
-RUN pnpm install --prod --frozen-lockfile
+# Install dependencies without lockfile
+RUN pnpm install --no-frozen-lockfile
 
-# Expose the port the app runs on
+# Copy application files
+COPY . .
+
+# Build the application
+RUN pnpm build
+
+# Expose port
 EXPOSE 3000
 
-# Start the application
+# Start command
 CMD ["node", ".output/server/index.mjs"] 
