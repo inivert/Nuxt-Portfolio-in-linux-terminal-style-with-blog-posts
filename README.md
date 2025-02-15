@@ -182,7 +182,7 @@ echo "Example command"
 2. Use a clear name like `linux-tutorial.jpg` (avoid spaces in filenames)
 3. In your blog post, add the image using this format:
    ```markdown
-   ![Description of Image](/images/blog/your-image.jpg)
+   ![Description of Image](/images/blog/terminal.jpeg)
    ```
 
 ### Required Fields Explained
