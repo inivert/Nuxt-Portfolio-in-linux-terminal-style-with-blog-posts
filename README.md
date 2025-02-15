@@ -173,7 +173,7 @@ echo "Example command"
 [Link Text](https://example.com) # [Text](URL) format
 
 ## Adding Images                 # How to add images
-![Description](/images/blog/your-image.jpg)  # ![Alt text](image-path)
+![Description](/images/blog/terminal.jpeg)  # ![Alt text](image-path)
 ```
 
 ### Adding Images to Your Post
