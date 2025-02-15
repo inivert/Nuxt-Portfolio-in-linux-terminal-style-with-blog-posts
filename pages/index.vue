@@ -108,12 +108,48 @@
       class="mb-16"
     >
       <h2 class="text-2xl font-bold mb-6 font-mono text-terminal-cyan">> Contact</h2>
-      <div class="border dark:border-terminal-white/20 rounded-lg p-6">
-        <div class="font-mono space-y-2">
-          <p><span class="text-terminal-yellow">$</span> echo $EMAIL</p>
-          <p class="opacity-80 contact-info">your.email@example.com</p>
-          <p><span class="text-terminal-yellow">$</span> echo $GITHUB</p>
-          <p class="opacity-80 contact-info">github.com/yourusername</p>
+      <div class="border dark:border-terminal-white/20 rounded-lg p-6 bg-white dark:bg-terminal-black">
+        <div class="font-mono space-y-4">
+          <!-- Email -->
+          <div class="contact-item">
+            <p class="command-line">
+              <span>$</span>
+              <span>echo $EMAIL</span>
+            </p>
+            <p class="output-line">your.email@example.com</p>
+          </div>
+          
+          <!-- LinkedIn -->
+          <div class="contact-item">
+            <p class="command-line">
+              <span>$</span>
+              <span>echo $LINKEDIN</span>
+            </p>
+            <p class="output-line">
+              <a href="https://linkedin.com/in/yourusername" 
+                 target="_blank" 
+                 rel="noopener noreferrer" 
+                 class="text-terminal-blue hover:text-terminal-blue/80 transition-colors">
+                linkedin.com/in/yourusername
+              </a>
+            </p>
+          </div>
+
+          <!-- GitHub -->
+          <div class="contact-item">
+            <p class="command-line">
+              <span>$</span>
+              <span>echo $GITHUB</span>
+            </p>
+            <p class="output-line">
+              <a href="https://github.com/yourusername" 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+                 class="text-terminal-purple hover:text-terminal-purple/80 transition-colors">
+                github.com/yourusername
+              </a>
+            </p>
+          </div>
         </div>
       </div>
     </section>
@@ -160,10 +196,10 @@ onMounted(() => {
     easing: 'easeOutQuad'
   })
 
-  // Animate contact info
+  // Update contact animations to target new classes
   $anime({
-    targets: '.contact-info',
-    opacity: [0, 0.8],
+    targets: '.contact-item',
+    opacity: [0, 1],
     translateY: [10, 0],
     delay: $anime.stagger(200, { start: 2000 }),
     easing: 'easeOutQuad'
@@ -198,5 +234,48 @@ onMounted(() => {
 
 .prompt {
   user-select: none;
+}
+
+/* Updated contact section styles */
+.contact-item {
+  margin-bottom: 1rem;
+  opacity: 1;
+}
+
+.command-line {
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.command-line span {
+  color: rgb(224, 175, 104); /* terminal yellow */
+}
+
+.output-line {
+  padding-left: 1.5rem;
+  color: rgb(169, 177, 214); /* terminal white */
+}
+
+.output-line a {
+  text-decoration: none;
+  display: inline-block;
+}
+
+.output-line a:hover {
+  text-decoration: underline;
+}
+
+/* Ensure dark mode text visibility */
+:root {
+  --terminal-yellow: rgb(224, 175, 104);
+  --terminal-blue: rgb(122, 162, 247);
+  --terminal-purple: rgb(157, 124, 216);
+  --terminal-white: rgb(169, 177, 214);
+}
+
+.dark .output-line {
+  color: var(--terminal-white);
 }
 </style> 
