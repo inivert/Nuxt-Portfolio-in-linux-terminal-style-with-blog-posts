@@ -1,0 +1,33 @@
+collections:
+  blog:
+    enabled: true
+    path: /blog
+    sort:
+      - date:desc
+    filter:
+      - _partial:false
+      - draft:false
+    fields:
+      - title
+      - description
+      - date
+      - category
+      - image
+      - author
+      - _path
+
+markdown:
+  remarkPlugins:
+    - remark-reading-time
+  toc:
+    depth: 3
+    searchDepth: 3
+
+highlight:
+  theme: github-dark
+  preload:
+    - bash
+    - js
+    - ts
+    - json
+    - yaml 

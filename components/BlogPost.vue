@@ -10,11 +10,11 @@
     </div>
     <div class="p-6">
       <h3 class="text-xl font-bold mb-2">{{ title }}</h3>
-      <p class="opacity-80 mb-4">{{ preview }}</p>
+      <p class="opacity-80 mb-4">{{ description }}</p>
       <div class="flex items-center text-sm opacity-60">
-        <span>{{ date }}</span>
+        <span>{{ formatDate(date) }}</span>
         <span class="mx-2">•</span>
-        <span>{{ readTime }} min read</span>
+        <span>{{ readTime?.text || '5 min read' }}</span>
         <span class="mx-2">•</span>
         <span class="text-terminal-purple">{{ category }}</span>
       </div>
@@ -22,27 +22,24 @@
   </article>
 </template>
 
-<script setup>
-defineProps({
-  title: {
-    type: String,
-    required: true
-  },
-  preview: {
-    type: String,
-    required: true
-  },
-  date: {
-    type: String,
-    required: true
-  },
-  readTime: {
-    type: Number,
-    default: 5
-  },
-  category: {
-    type: String,
-    required: true
-  }
-})
+<script setup lang="ts">
+import type { BlogPost } from '~/types/blog'
+
+interface Props {
+  title: string
+  description: string
+  date: string
+  readTime?: BlogPost['readTime']
+  category: string
+}
+
+defineProps<Props>()
+
+const formatDate = (date: string): string => {
+  return new Date(date).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  })
+}
 </script> 

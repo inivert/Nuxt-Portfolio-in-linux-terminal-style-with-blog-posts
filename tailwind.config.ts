@@ -6,14 +6,14 @@ export default {
   theme: {
     extend: {
       colors: {
-        'terminal-black': '#282c34',
-        'terminal-red': '#e06c75',
-        'terminal-green': '#98c379',
-        'terminal-yellow': '#e5c07b',
-        'terminal-blue': '#61afef',
-        'terminal-purple': '#c678dd',
-        'terminal-cyan': '#56b6c2',
-        'terminal-white': '#dcdfe4',
+        'terminal-black': '#1a1b26',
+        'terminal-white': '#a9b1d6',
+        'terminal-red': '#f7768e',
+        'terminal-green': '#9ece6a',
+        'terminal-yellow': '#e0af68',
+        'terminal-blue': '#7aa2f7',
+        'terminal-purple': '#9d7cd8',
+        'terminal-cyan': '#7dcfff'
       },
       fontFamily: {
         mono: ['JetBrains Mono', 'monospace'],
@@ -28,6 +28,30 @@ export default {
           '50%': { opacity: '0' },
         },
       },
+      typography: {
+        DEFAULT: {
+          css: {
+            a: {
+              color: 'rgb(147, 51, 234)',
+              textDecoration: 'none',
+              '&:hover': {
+                color: 'rgb(168, 85, 247)',
+                textDecoration: 'underline'
+              }
+            }
+          }
+        },
+        invert: {
+          css: {
+            a: {
+              color: 'rgb(192, 132, 252)',
+              '&:hover': {
+                color: 'rgb(216, 180, 254)'
+              }
+            }
+          }
+        }
+      }
     },
   },
   plugins: [],

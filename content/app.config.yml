@@ -1,0 +1,32 @@
+navigation:
+  fields:
+    - title
+    - description
+    - date
+    - category
+    - _path
+
+highlight:
+  theme: github-dark
+  preload:
+    - bash
+    - js
+    - ts
+    - json
+    - yaml
+
+markdown:
+  remarkPlugins:
+    - remark-reading-time
+  toc:
+    depth: 3
+    searchDepth: 3
+
+blog:
+  title: Blog
+  description: Technical writings about Linux, networking, and security.
+  image:
+    src: /blog-hero.jpg
+    alt: Blog hero image
+    width: 400
+    height: 300 
